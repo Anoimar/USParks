@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="park"
+            type="com.thernat.mapcompare.data.Park" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        tools:context=".ParksFragment">
+
+        <ImageView
+            android:id="@+id/park_image"
+            android:layout_width="0dp"
+            android:layout_height="300dp"
+            android:layout_margin="8dp"
+            imageUrl="@{park.image}"
+            tools:src="@tools:sample/backgrounds/scenic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_park_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{park.fullName}"
+            android:layout_marginHorizontal="8dp"
+            android:gravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            tools:text="African American Civil War Memorial"
+            app:layout_constraintTop_toBottomOf="@+id/park_image" />
+
+        <ScrollView
+            android:id="@+id/layout_park_description"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintEnd_toEndOf="@+id/tv_park_name"
+            app:layout_constraintStart_toStartOf="@+id/tv_park_name"
+            app:layout_constraintBottom_toTopOf="@+id/button_go_to_details"
+            app:layout_constraintTop_toBottomOf="@+id/tv_park_name">
+
+            <TextView
+                android:id="@+id/tv_park_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{park.description}"
+                app:layout_constraintEnd_toEndOf="@+id/tv_park_name"
+                app:layout_constraintStart_toStartOf="@+id/tv_park_name"
+                tools:text="@tools:sample/lorem/random" />
+        </ScrollView>
+
+
+        <Button
+            android:id="@+id/button_go_to_details"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="@string/go_to_park"
+            android:layout_marginHorizontal="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+        </Button>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
