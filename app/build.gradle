@@ -3,6 +3,7 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
+    id "androidx.navigation.safeargs.kotlin"
 }
 
 android {
@@ -40,6 +41,7 @@ android {
 }
 
 dependencies {
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     kapt "com.google.dagger:hilt-android-compiler:$rootProject.hiltVersion"
     kapt "com.github.bumptech.glide:compiler:$rootProject.glideVersion"
     kapt "androidx.hilt:hilt-compiler:$rootProject.hiltViewModelVersion"

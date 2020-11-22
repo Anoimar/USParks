@@ -11,18 +11,26 @@
         android:label="@string/first_fragment_label"
         tools:layout="@layout/fragment_parks">
 
-      <!--  <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />-->
-    </fragment>
-<!--    <fragment
-        android:id="@+id/SecondFragment"
-        android:name="com.thernat.mapcompare.SecondFragment"
-        android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
+      <action
+              android:id="@+id/action_ParksFragment_to_ParkMapsFragment"
+              app:destination="@id/ParkMapsFragment">
 
-        <action
+
+      </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/ParkMapsFragment"
+        android:name="com.thernat.mapcompare.ParkMapFragment"
+        android:label="@string/second_fragment_label"
+        tools:layout="@layout/park_map_fragment">
+
+       <!-- <action
             android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
-    </fragment>-->
+            app:destination="@id/FirstFragment" />-->
+
+        <argument
+            android:name="ParkMapData"
+            app:argType="com.thernat.mapcompare.data.ParkMapData" />
+    </fragment>
 </navigation>

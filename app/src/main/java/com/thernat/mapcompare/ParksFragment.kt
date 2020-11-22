@@ -19,8 +19,8 @@ class ParksFragment : Fragment() {
     private val viewModel: ParksViewModel by viewModels()
 
     override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         val binding = FragmentParksBinding.inflate(inflater, container, false).apply {
             parksViewPager.adapter = ParkAdapter().also { subscribeForUpdates(it) }
@@ -32,7 +32,13 @@ class ParksFragment : Fragment() {
         viewModel.parks.observe(viewLifecycleOwner) {
             if (it.status == Resource.Status.SUCCESS) {
                 val parks = it.data?.park?.map { park ->
-                    Park(park.fullName, park.description, park.images.firstOrNull()?.url)
+                    Park(
+                        park.fullName,
+                        park.description,
+                        park.images.firstOrNull()?.url,
+                        park.longitude,
+                        park.latitude
+                    )
                 }
                 adapter.submitList(parks)
             }
