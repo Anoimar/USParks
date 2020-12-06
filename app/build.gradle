@@ -65,6 +65,9 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-moshi:$rootProject.retrofitVersion"
     implementation "com.squareup.okhttp3:logging-interceptor:$rootProject.okhttpLoggingVersion"
 
+    implementation "org.osmdroid:osmdroid-android:$rootProject.osmdroidVersion"
+
+
     implementation "com.squareup.moshi:moshi:$rootProject.moshiVersion"
     implementation "com.squareup.moshi:moshi-kotlin:$rootProject.moshiVersion"
     testImplementation 'junit:junit:4.+'

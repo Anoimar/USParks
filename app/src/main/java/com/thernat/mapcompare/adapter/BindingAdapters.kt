@@ -18,9 +18,9 @@ fun bindImage(view: ImageView, url: String?) {
         circularProgressDrawable.centerRadius = 30f
         circularProgressDrawable.start()
         Glide.with(view.context)
-                .load(url)
-                .placeholder(circularProgressDrawable)
-                .into(view)
+            .load(url)
+            .placeholder(circularProgressDrawable)
+            .into(view)
     }
 }
 
@@ -28,13 +28,13 @@ fun bindImage(view: ImageView, url: String?) {
 fun bindOnGoToDetailsClicked(button: Button, park: Park) {
     button.setOnClickListener {
         Navigation.createNavigateOnClickListener(
-                ParksFragmentDirections.actionParksFragmentToParkMapsFragment(
-                        ParkMapData(
-                                park.fullName,
-                                park.longitude.toDouble(),
-                                park.latitude.toDouble()
-                        )
+            ParksFragmentDirections.actionParksFragmentToParkMapsFragment(
+                ParkMapData(
+                    park.fullName,
+                    park.longitude.toDouble(),
+                    park.latitude.toDouble()
                 )
+            )
         ).onClick(it)
     }
 }

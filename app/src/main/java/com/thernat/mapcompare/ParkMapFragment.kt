@@ -1,5 +1,6 @@
 package com.thernat.mapcompare
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -7,10 +8,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
-import com.thernat.mapcompare.data.ParkMapData
+import org.osmdroid.tileprovider.tilesource.TileSourceFactory
 import com.thernat.mapcompare.databinding.ParkMapFragmentBinding
 import com.thernat.mapcompare.viewmodel.ParkMapViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import org.osmdroid.config.Configuration
+import org.osmdroid.views.CustomZoomButtonsController
 
 @AndroidEntryPoint
 class ParkMapFragment : Fragment() {
@@ -19,19 +22,29 @@ class ParkMapFragment : Fragment() {
 
     private val viewModel: ParkMapViewModel by viewModels()
 
+    private lateinit var binding: ParkMapFragmentBinding
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val bindings = ParkMapFragmentBinding.inflate(inflater, container, false)
-            .apply {
-                park = args.ParkMapData
-            }
-        return bindings.root
+
+        binding = ParkMapFragmentBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        Configuration.getInstance().apply {
+            load(
+                requireContext(),
+                requireActivity().getSharedPreferences(
+                    "${requireContext().packageName}_prefs",
+                    Context.MODE_PRIVATE
+                )
+            )
+            userAgentValue = BuildConfig.APPLICATION_ID
+        }
+        binding.park = args.ParkMapData
     }
-
 }
+

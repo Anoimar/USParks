@@ -25,6 +25,12 @@
             android:text="@{park.name}"
             tools:text="African Burial Ground National Monument" />
 
+        <org.osmdroid.views.MapView
+            android:id="@+id/map_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            parkMarker="@{park}" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

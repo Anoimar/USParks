@@ -6,19 +6,18 @@ import android.os.Parcelable
 data class ParkMapData(
     val name: String?,
     val longitude: Double,
-    val Latitude: Double
+    val latitude: Double
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readString(),
         parcel.readDouble(),
         parcel.readDouble()
-    ) {
-    }
+    )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(name)
         parcel.writeDouble(longitude)
-        parcel.writeDouble(Latitude)
+        parcel.writeDouble(latitude)
     }
 
     override fun describeContents(): Int {
